@@ -100,6 +100,16 @@ python -m src.catalog --force       # rebuild index
 
 แก้ `CATEGORIES` / `N_PER_CAT` ใน `data/build_products.py` เพื่อเปลี่ยนหมวด/จำนวน
 
+## แหล่งข้อมูล (Data source)
+
+แคตตาล็อกสินค้าและรีวิวทั้งหมดมาจากชุดข้อมูลสาธารณะ **Amazon Reviews 2023** (McAuley Lab, UCSD):
+
+- 🤗 Dataset: https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023
+- 🌐 หน้าโครงการ: https://amazon-reviews-2023.github.io/
+- 📄 อ้างอิง: Hou, Y. et al. *Bridging Language and Items for Retrieval and Recommendation.* arXiv:2403.03952 (2024) — https://arxiv.org/abs/2403.03952
+
+repo นี้เก็บเฉพาะตัวอย่าง `data/products.sample.json` (84 ชิ้น) ไว้ให้ดูโครงสร้าง — แคตตาล็อกเต็ม ~10,000 ชิ้น (`data/products.json`) สร้างเองด้วย `data/build_products.py` ที่ดึง metadata (title / price / features / description) จากชุดข้อมูลข้างต้น ส่วน `eval/eval_amazon_loo.py` สตรีมไฟล์รีวิวจริงมาทำ leave-one-out
+
 ## โครงสร้างโค้ด (เรียงตามลำดับที่ควรอ่านตอนสอน)
 
 ```
