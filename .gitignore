@@ -8,7 +8,7 @@ __pycache__/
 data/products.json
 data/products_1800_backup.json
 
-# ===== ไฟล์โดเมนเก่า (หนัง/redial) — โปรเจกต์ pivot เป็น product recommendation แล้ว =====
+# ===== ไฟล์เก่าที่ไม่ได้ใช้แล้ว (ก่อน pivot มาเป็น product recommendation) =====
 data/movies.json
 data/movies.sample.json
 data/movielens/
@@ -26,3 +26,8 @@ eval/reports/
 
 # ===== สไลด์ (binary) =====
 docs/*.pptx
+
+# ===== แผนภาพเก่าที่รอทำเวอร์ชัน product =====
+docs/architecture.svg
+docs/eval-results.svg
+docs/layered-flow.svg

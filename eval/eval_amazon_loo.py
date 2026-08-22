@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Leave-One-Out Recall@k บนรีวิว Amazon จริง (ข้อมูลมาตรฐาน) — โดเมนสินค้า
 
-วิธีมาตรฐานเดียวกับ MovieLens leave-one-out:
+วิธีมาตรฐานแบบ leave-one-out:
   - ดึงประวัติผู้ใช้จริงจากไฟล์รีวิว Amazon (user -> สินค้าที่รีวิว)
   - ต่อผู้ใช้ 1 คน: ซ่อนสินค้าชิ้นล่าสุด 1 ชิ้น (target) ใช้ที่เหลือเป็น "รสนิยม" (profile)
   - วัดว่า retriever ดึง target กลับมาใน top-k ได้ไหม -> Recall@k
@@ -10,7 +10,7 @@
 ผล:  eval/reports/amazon_loo.md
 
 หมายเหตุ (ตามตรง): retriever เป็น content-based (ดูเนื้อหาสินค้า) ไม่ใช่ collaborative filtering
-ค่า Recall อาจต่ำ = task mismatch ไม่ใช่บั๊ก (บทเรียนเดียวกับ MovieLens leave-one-out)
+ค่า Recall อาจต่ำ = task mismatch ไม่ใช่บั๊ก (เป็นข้อจำกัดของ content-based โดยธรรมชาติ)
 ต้องสตรีมไฟล์รีวิว/เมทาจาก HuggingFace (ใหญ่) จึงใช้ line cap + early stop
 """
 import sys
@@ -214,7 +214,7 @@ def main():
                        tbl,
                        "> retriever เป็น content-based ไม่ใช่ collaborative filtering — "
                        "Recall สะท้อน 'ทายชิ้นถัดไปจากเนื้อหาสินค้า' ซึ่งยากโดยธรรมชาติ "
-                       "(task mismatch แบบเดียวกับ MovieLens leave-one-out) "
+                       "(task mismatch: content-based ทำ collaborative filtering ตรง ๆ ไม่ได้)"
                        "แต่เทียบ random ยังเห็นว่ามีสัญญาณ",
                    ])
 
