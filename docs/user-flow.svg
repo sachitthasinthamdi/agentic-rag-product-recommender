@@ -1,0 +1,64 @@
+<svg viewBox="0 0 740 600" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI','Noto Sans Thai',sans-serif" role="img" aria-label="แผนภาพเส้นทางการใช้งานของผู้ใช้">
+<title>Use Case — เส้นทางการใช้งานของผู้ใช้ น้องช้อป</title>
+<desc>ผู้ใช้เปิดแอป พิมพ์ความต้องการ ระบบเลือกถาม/ตอบ/แนะนำ แล้ววนลูปจนพอใจ</desc>
+<defs><marker id="b" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6B6A66"/></marker></defs>
+<rect x="2" y="2" width="736" height="596" rx="14" fill="#FFFFFF" stroke="#E5E3DC" stroke-width="1.5"/>
+<text x="28" y="38" font-size="20" font-weight="500" fill="#2C2C2A">Use Case — เส้นทางการใช้งานของผู้ใช้</text>
+<text x="28" y="60" font-size="12.5" fill="#5F5E5A">หนึ่งบทสนทนา = วนลูปจนกว่าจะเจอสินค้าที่ใช่</text>
+
+<rect x="300" y="80" width="140" height="32" rx="16" fill="#F1EFE8" stroke="#888780"/>
+<text x="370" y="100" text-anchor="middle" font-size="12.5" fill="#444441">เปิดแอป น้องช้อป</text>
+<line x1="370" y1="112" x2="370" y2="128" stroke="#6B6A66" stroke-width="1.6" marker-end="url(#b)"/>
+
+<rect x="250" y="130" width="240" height="44" rx="8" fill="#F1EFE8" stroke="#888780"/>
+<text x="370" y="150" text-anchor="middle" font-size="13" font-weight="500" fill="#2C2C2A">ผู้ใช้พิมพ์ข้อความ</text>
+<text x="370" y="166" text-anchor="middle" font-size="11" fill="#5F5E5A">ไทย หรือ อังกฤษ ก็ได้</text>
+<line x1="370" y1="174" x2="370" y2="190" stroke="#6B6A66" stroke-width="1.6" marker-end="url(#b)"/>
+
+<rect x="270" y="192" width="200" height="40" rx="8" fill="#EEEDFE" stroke="#7F77DD"/>
+<text x="370" y="210" text-anchor="middle" font-size="12.5" font-weight="500" fill="#3C3489">Planner เลือก action</text>
+<text x="370" y="225" text-anchor="middle" font-size="10.5" fill="#534AB7">ask / chat / recommend</text>
+
+<g stroke="#6B6A66" stroke-width="1.5" fill="none">
+<path d="M370 232 V246 H136 V260" marker-end="url(#b)"/>
+<path d="M370 246 V260" marker-end="url(#b)"/>
+<path d="M370 246 H604 V260" marker-end="url(#b)"/>
+</g>
+
+<rect x="36" y="260" width="200" height="64" rx="8" fill="#EEEDFE" stroke="#7F77DD"/>
+<text x="136" y="284" text-anchor="middle" font-size="12.5" font-weight="500" fill="#3C3489">ask — ถามกลับ</text>
+<text x="136" y="301" text-anchor="middle" font-size="10.5" fill="#534AB7">ข้อมูลยังไม่พอ</text>
+<text x="136" y="316" text-anchor="middle" font-size="10.5" fill="#534AB7">ถามเจาะ 1 คำถาม</text>
+
+<rect x="270" y="260" width="200" height="64" rx="8" fill="#E6F1FB" stroke="#378ADD"/>
+<text x="370" y="284" text-anchor="middle" font-size="12.5" font-weight="500" fill="#0C447C">chat — ตอบข้อมูล</text>
+<text x="370" y="301" text-anchor="middle" font-size="10.5" fill="#185FA5">ผู้ใช้ถามเฉยๆ</text>
+<text x="370" y="316" text-anchor="middle" font-size="10.5" fill="#185FA5">ตอบจากคลังสินค้า</text>
+
+<rect x="504" y="260" width="200" height="64" rx="8" fill="#FAEEDA" stroke="#BA7517"/>
+<text x="604" y="284" text-anchor="middle" font-size="12.5" font-weight="500" fill="#854F0B">recommend — แนะนำ</text>
+<text x="604" y="301" text-anchor="middle" font-size="10.5" fill="#A5731A">แนะนำ 3 ชิ้น (ในงบ)</text>
+<text x="604" y="316" text-anchor="middle" font-size="10.5" fill="#A5731A">+ เหตุผลเฉพาะคุณ</text>
+
+<g stroke="#6B6A66" stroke-width="1.5" fill="none">
+<path d="M136 324 V340 M604 324 V340 M370 324 V340"/>
+<path d="M136 340 H604"/>
+<path d="M370 340 V356" marker-end="url(#b)"/>
+</g>
+
+<rect x="250" y="356" width="240" height="46" rx="8" fill="#F1EFE8" stroke="#888780"/>
+<text x="370" y="378" text-anchor="middle" font-size="12.5" font-weight="500" fill="#2C2C2A">ผู้ใช้อ่านคำตอบ</text>
+<text x="370" y="394" text-anchor="middle" font-size="10.5" fill="#5F5E5A">+ การ์ดสินค้า (รูป/ราคา) + side panel</text>
+<line x1="370" y1="402" x2="370" y2="416" stroke="#6B6A66" stroke-width="1.6" marker-end="url(#b)"/>
+
+<rect x="270" y="418" width="200" height="40" rx="8" fill="#F1EFE8" stroke="#888780"/>
+<text x="370" y="442" text-anchor="middle" font-size="12.5" font-weight="500" fill="#2C2C2A">ถูกใจ หรืออยากปรับ?</text>
+
+<line x1="370" y1="458" x2="370" y2="476" stroke="#639922" stroke-width="1.6" marker-end="url(#b)"/>
+<text x="384" y="471" font-size="10.5" fill="#3B6D11">พอใจ</text>
+<rect x="290" y="478" width="160" height="34" rx="17" fill="#EAF3DE" stroke="#639922"/>
+<text x="370" y="500" text-anchor="middle" font-size="12.5" font-weight="500" fill="#3B6D11">ตัดสินใจซื้อ — จบ</text>
+
+<path d="M470 438 H716 V152 H492" fill="none" stroke="#B0862F" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#b)"/>
+<text x="730" y="300" text-anchor="middle" font-size="11" font-weight="500" fill="#8A6A22" transform="rotate(90 730 300)">วนกลับ: ปฏิเสธ / เปลี่ยนงบ / บอกเพิ่ม</text>
+</svg>

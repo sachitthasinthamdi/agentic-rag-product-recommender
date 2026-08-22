@@ -1,0 +1,72 @@
+<svg viewBox="0 0 920 580" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI','Noto Sans Thai',sans-serif" role="img" aria-label="ลำดับการทำงานของ pipeline เน้น Retriever">
+<title>Sequence — ลำดับการทำงานของ Pipeline (recommend)</title>
+<desc>เวลาเดินจากบนลงล่าง แสดงว่า Retriever รับ profile จาก Memory เรียก bge-m3 และ ChromaDB แล้วส่ง candidates ต่อให้ Reranker</desc>
+<defs>
+<marker id="s" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#5F5E5A"/></marker>
+<marker id="sr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9A9992"/></marker>
+</defs>
+<rect x="2" y="2" width="916" height="576" rx="14" fill="#FFFFFF" stroke="#E5E3DC" stroke-width="1.5"/>
+<text x="26" y="32" font-size="18" font-weight="500" fill="#2C2C2A">ลำดับการทำงานของ Pipeline (use case: recommend) — เน้น Retriever</text>
+<text x="26" y="52" font-size="11" fill="#7A7972">เวลาเดินจากบนลงล่าง · เส้นทึบ = เรียก · เส้นประ = ส่งผลกลับ</text>
+
+<g font-size="12" font-weight="500">
+<rect x="26" y="68" width="146" height="36" rx="8" fill="#F1EFE8" stroke="#888780"/><text x="99" y="85" text-anchor="middle" fill="#444441">Orchestrator</text><text x="99" y="98" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5F5E5A">agent.py</text>
+<rect x="196" y="68" width="96" height="36" rx="8" fill="#E1F5EE" stroke="#1D9E75"/><text x="244" y="85" text-anchor="middle" fill="#0F6E56">Memory</text><text x="244" y="98" text-anchor="middle" font-size="9.5" font-weight="400" fill="#0F6E56">CRS</text>
+<rect x="318" y="68" width="96" height="36" rx="8" fill="#EEEDFE" stroke="#7F77DD"/><text x="366" y="85" text-anchor="middle" fill="#3C3489">Planner</text><text x="366" y="98" text-anchor="middle" font-size="9.5" font-weight="400" fill="#3C3489">Agent</text>
+<rect x="440" y="68" width="112" height="36" rx="8" fill="#FAEEDA" stroke="#BA7517" stroke-width="2"/><text x="496" y="85" text-anchor="middle" fill="#854F0B">Retriever</text><text x="496" y="98" text-anchor="middle" font-size="9.5" font-weight="400" fill="#854F0B">RAG</text>
+<rect x="578" y="68" width="100" height="36" rx="8" fill="#FAEEDA" stroke="#BA7517"/><text x="628" y="85" text-anchor="middle" fill="#854F0B">Reranker</text><text x="628" y="98" text-anchor="middle" font-size="9.5" font-weight="400" fill="#854F0B">RAG</text>
+<rect x="700" y="68" width="150" height="36" rx="8" fill="#FAEEDA" stroke="#BA7517"/><text x="775" y="85" text-anchor="middle" fill="#854F0B">Generator</text><text x="775" y="98" text-anchor="middle" font-size="9.5" font-weight="400" fill="#854F0B">agent.py + Typhoon2</text>
+</g>
+
+<g stroke="#C7C5BC" stroke-width="1" stroke-dasharray="4 4">
+<line x1="99" y1="104" x2="99" y2="548"/><line x1="244" y1="104" x2="244" y2="548"/><line x1="366" y1="104" x2="366" y2="548"/><line x1="496" y1="104" x2="496" y2="548"/><line x1="628" y1="104" x2="628" y2="548"/><line x1="775" y1="104" x2="775" y2="548"/>
+</g>
+
+<rect x="16" y="232" width="888" height="136" rx="8" fill="#FDF7EA" stroke="#E7C778" stroke-dasharray="6 4"/>
+<text x="24" y="248" font-size="10.5" font-weight="500" fill="#8A6A22">ขั้นที่ 3 · Retriever</text>
+
+<g font-size="11">
+<text x="171" y="126" text-anchor="middle" fill="#444441">update_profile(msg)</text>
+<line x1="99" y1="132" x2="244" y2="132" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#s)"/>
+<text x="171" y="146" text-anchor="middle" font-size="9.5" fill="#8A6A22">↳ Typhoon2 สกัด preference</text>
+<text x="171" y="168" text-anchor="middle" fill="#5F5E5A">profile (JSON)</text>
+<line x1="244" y1="174" x2="99" y2="174" stroke="#9A9992" stroke-width="1.3" stroke-dasharray="5 3" marker-end="url(#sr)"/>
+
+<text x="232" y="196" text-anchor="middle" fill="#444441">decide(profile, history)</text>
+<line x1="99" y1="202" x2="366" y2="202" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#s)"/>
+<text x="232" y="216" text-anchor="middle" font-size="9.5" fill="#8A6A22">↳ Typhoon2 เลือก action</text>
+<text x="232" y="228" text-anchor="middle" fill="#5F5E5A">= "recommend"</text>
+</g>
+
+<g font-size="11">
+<text x="297" y="266" text-anchor="middle" fill="#854F0B" font-weight="500">retrieve(query, exclude, media_type)</text>
+<line x1="99" y1="272" x2="496" y2="272" stroke="#BA7517" stroke-width="1.6" marker-end="url(#s)"/>
+<text x="297" y="288" text-anchor="middle" font-size="9.5" fill="#6B6A66">query = ข้อความ + profile · exclude = rejected_titles · filter = media_type</text>
+<text x="297" y="300" text-anchor="middle" font-size="9.5" fill="#6B6A66">(ทั้งสามอย่างมาจาก Memory)</text>
+
+<path d="M496 312 H520 V324 H498" fill="none" stroke="#BA7517" stroke-width="1.4" marker-end="url(#s)"/>
+<text x="528" y="322" font-size="10" fill="#854F0B">bge-m3 — แปลง query เป็นเวกเตอร์ 1024 มิติ</text>
+<path d="M496 338 H520 V350 H498" fill="none" stroke="#888780" stroke-width="1.4" marker-end="url(#s)"/>
+<text x="528" y="348" font-size="10" fill="#5F5E5A">ChromaDB — ค้น cosine top-10 + กรอง media_type</text>
+
+<text x="297" y="366" text-anchor="middle" fill="#854F0B">candidates (10 เรื่อง)</text>
+<line x1="496" y1="372" x2="99" y2="372" stroke="#9A9992" stroke-width="1.3" stroke-dasharray="5 3" marker-end="url(#sr)"/>
+</g>
+
+<g font-size="11">
+<text x="363" y="396" text-anchor="middle" fill="#444441">rerank(candidates, profile)</text>
+<line x1="99" y1="402" x2="628" y2="402" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#s)"/>
+<text x="363" y="416" text-anchor="middle" font-size="9.5" fill="#8A6A22">↳ Typhoon2 ให้คะแนน 0-10 เทียบ profile → คัดเหลือ 3</text>
+<text x="363" y="438" text-anchor="middle" fill="#5F5E5A">picked (3 เรื่อง + เหตุผล)</text>
+<line x1="628" y1="444" x2="99" y2="444" stroke="#9A9992" stroke-width="1.3" stroke-dasharray="5 3" marker-end="url(#sr)"/>
+
+<text x="437" y="466" text-anchor="middle" fill="#444441">generate(picked, profile)</text>
+<line x1="99" y1="472" x2="775" y2="472" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#s)"/>
+<text x="437" y="486" text-anchor="middle" font-size="9.5" fill="#8A6A22">↳ Typhoon2 เขียนคำตอบไทย (ground กับเรื่องที่คัดมา)</text>
+<text x="437" y="508" text-anchor="middle" fill="#5F5E5A">reply</text>
+<line x1="775" y1="514" x2="99" y2="514" stroke="#9A9992" stroke-width="1.3" stroke-dasharray="5 3" marker-end="url(#sr)"/>
+
+<text x="171" y="536" text-anchor="middle" fill="#444441">add(msg, reply) — บันทึกบทสนทนา</text>
+<line x1="99" y1="542" x2="244" y2="542" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#s)"/>
+</g>
+</svg>

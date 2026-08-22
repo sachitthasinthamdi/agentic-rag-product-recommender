@@ -1,0 +1,84 @@
+<svg viewBox="0 0 1240 780" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI','Noto Sans Thai',sans-serif" role="img" aria-label="mindmap สรุปโปรเจกต์">
+<title>Mindmap — น้องช้อป (สรุปช่วยจำ)</title>
+<desc>แผนผังความคิดสรุปโปรเจกต์ 6 กิ่ง แนวคิด stack ข้อมูล pipeline evaluation หลักการเขียน</desc>
+<rect x="2" y="2" width="1236" height="776" rx="14" fill="#FDFDFC" stroke="#E5E3DC" stroke-width="1.5"/>
+
+<!-- connectors (behind) -->
+<g fill="none" stroke-width="3">
+<path d="M475 358 C 425 300, 465 170, 442 122" stroke="#12A594"/>
+<path d="M475 390 L442 390" stroke="#6C5CE7"/>
+<path d="M475 422 C 425 500, 465 610, 442 658" stroke="#E8930C"/>
+<path d="M765 358 C 815 300, 775 170, 798 122" stroke="#FF6B57"/>
+<path d="M765 390 L798 390" stroke="#2E9E6B"/>
+<path d="M765 422 C 815 500, 775 610, 798 658" stroke="#2563EB"/>
+</g>
+
+<!-- CENTER -->
+<rect x="475" y="318" width="290" height="144" rx="18" fill="#16213E" stroke="#0E1526" stroke-width="1.5"/>
+<text x="620" y="368" text-anchor="middle" font-size="30" font-weight="800" fill="#FFFFFF">🛒 น้องช้อป</text>
+<text x="620" y="398" text-anchor="middle" font-size="13" fill="#CFE0FF">Conversational Product Recommendation</text>
+<text x="620" y="420" text-anchor="middle" font-size="12" fill="#8FA6CF">Agentic RAG · รัน local · ฟรี 100%</text>
+<text x="620" y="444" text-anchor="middle" font-size="11" fill="#6E82AA">Typhoon2 8B + bge-m3 + ChromaDB</text>
+
+<!-- L1 แนวคิด -->
+<rect x="40" y="28" width="400" height="188" rx="12" fill="#E4F5F0" stroke="#12A594" stroke-width="1.6"/>
+<text x="64" y="62" font-size="17" font-weight="800" fill="#0C7A6E">💡 แนวคิด 3 อย่าง</text>
+<g font-size="13" fill="#243244">
+<text x="66" y="96"><tspan fill="#12A594" font-weight="700">▸ </tspan>AI Agent — คิดก่อนตอบ (ask/rec/chat)</text>
+<text x="66" y="128"><tspan fill="#12A594" font-weight="700">▸ </tspan>CRS — จำ preference สะสมระหว่างคุย</text>
+<text x="66" y="160"><tspan fill="#12A594" font-weight="700">▸ </tspan>RAG — อ้างของจริงในคลัง ไม่มโน</text>
+<text x="66" y="192" font-size="11.5" fill="#5C6B7A">= พนักงานขายที่ จด→คิด→หยิบ→คัด→เล่า</text>
+</g>
+
+<!-- L2 stack -->
+<rect x="40" y="296" width="400" height="188" rx="12" fill="#ECEAFB" stroke="#6C5CE7" stroke-width="1.6"/>
+<text x="64" y="330" font-size="17" font-weight="800" fill="#3A2E9E">🧰 Stack — local ฟรี</text>
+<g font-size="13" fill="#243244">
+<text x="66" y="362"><tspan fill="#6C5CE7" font-weight="700">▸ </tspan>Typhoon2 8B — LLM ไทย (คิด/เขียน)</text>
+<text x="66" y="390"><tspan fill="#6C5CE7" font-weight="700">▸ </tspan>bge-m3 — แปลงเวกเตอร์ (ค้นหา)</text>
+<text x="66" y="418"><tspan fill="#6C5CE7" font-weight="700">▸ </tspan>ChromaDB — vector database</text>
+<text x="66" y="446"><tspan fill="#6C5CE7" font-weight="700">▸ </tspan>Streamlit + CLI · Python ล้วน</text>
+</g>
+
+<!-- L3 data -->
+<rect x="40" y="564" width="400" height="188" rx="12" fill="#FBEFD9" stroke="#E8930C" stroke-width="1.6"/>
+<text x="64" y="598" font-size="17" font-weight="800" fill="#9A6206">📦 ข้อมูล (Data)</text>
+<g font-size="13" fill="#243244">
+<text x="66" y="630"><tspan fill="#E8930C" font-weight="700">▸ </tspan>Amazon Reviews 2023 (McAuley)</text>
+<text x="66" y="658"><tspan fill="#E8930C" font-weight="700">▸ </tspan>1,800 ชิ้น · 6 หมวด (หั่นมารัน local)</text>
+<text x="66" y="686"><tspan fill="#E8930C" font-weight="700">▸ </tspan>schema: title/price/features/image</text>
+<text x="66" y="714"><tspan fill="#E8930C" font-weight="700">▸ </tspan>งบ = hard filter (มิติ commercial)</text>
+</g>
+
+<!-- R1 pipeline -->
+<rect x="800" y="28" width="400" height="188" rx="12" fill="#FCE9E5" stroke="#FF6B57" stroke-width="1.6"/>
+<text x="824" y="62" font-size="17" font-weight="800" fill="#C13B29">⚙️ Pipeline 5 ขั้น</text>
+<g font-size="13" fill="#243244">
+<text x="826" y="92"><tspan fill="#FF6B57" font-weight="700">① </tspan>Memory — จด profile</text>
+<text x="826" y="118"><tspan fill="#FF6B57" font-weight="700">② </tspan>Planner — ask / recommend / chat</text>
+<text x="826" y="144"><tspan fill="#FF6B57" font-weight="700">③ </tspan>Retriever — ค้น + กรองงบ</text>
+<text x="826" y="170"><tspan fill="#FF6B57" font-weight="700">④ </tspan>Reranker — คัด 3 (ARAG)</text>
+<text x="826" y="196"><tspan fill="#FF6B57" font-weight="700">⑤ </tspan>Generator — เขียน ground</text>
+</g>
+
+<!-- R2 eval -->
+<rect x="800" y="296" width="400" height="188" rx="12" fill="#E6F5EC" stroke="#2E9E6B" stroke-width="1.6"/>
+<text x="824" y="330" font-size="17" font-weight="800" fill="#1C6E47">📊 Evaluation (รันจริง)</text>
+<g font-size="13" fill="#243244">
+<text x="826" y="362"><tspan fill="#2E9E6B" font-weight="700">▸ </tspan>ค้นหา: P@10 = 0.90 · budget 100%</text>
+<text x="826" y="390"><tspan fill="#2E9E6B" font-weight="700">▸ </tspan>บทสนทนา: Success@3 = 100%</text>
+<text x="826" y="418"><tspan fill="#2E9E6B" font-weight="700">▸ </tspan>มาตรฐาน: LOO Recall@10 = 0.23</text>
+<text x="826" y="446"><tspan fill="#2E9E6B" font-weight="700">▸ </tspan>ระบบ: 14.3 วิ/turn · JSON 0%</text>
+<text x="826" y="474"><tspan fill="#2E9E6B" font-weight="700">▸ </tspan>พฤติกรรม: 11/11</text>
+</g>
+
+<!-- R3 principles -->
+<rect x="800" y="564" width="400" height="188" rx="12" fill="#EAF1FF" stroke="#2563EB" stroke-width="1.6"/>
+<text x="824" y="598" font-size="17" font-weight="800" fill="#1E4FC0">🛡️ หลักการเขียน (8B เสถียร)</text>
+<g font-size="13" fill="#243244">
+<text x="826" y="630"><tspan fill="#2563EB" font-weight="700">▸ </tspan>ไม่เชื่อ AI → fallback เสมอ</text>
+<text x="826" y="658"><tspan fill="#2563EB" font-weight="700">▸ </tspan>schema = สัญญา (whitelist ช่อง)</text>
+<text x="826" y="686"><tspan fill="#2563EB" font-weight="700">▸ </tspan>hard filter (งบ) vs soft (หมวด)</text>
+<text x="826" y="714"><tspan fill="#2563EB" font-weight="700">▸ </tspan>llm.py = คอขวดเดียว · agent.py = คุมงาน</text>
+</g>
+</svg>

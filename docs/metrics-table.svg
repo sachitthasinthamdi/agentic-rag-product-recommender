@@ -1,0 +1,77 @@
+<svg viewBox="0 0 880 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI','Noto Sans Thai',sans-serif" role="img" aria-label="ตารางสรุปตัวชี้วัด">
+<title>ตารางสรุปตัวชี้วัด — น้องช้อป</title>
+<desc>ตัวชี้วัด 4 กลุ่ม RAG CRS System Behavioral กลุ่ม RAG ใช้ label หมวดและรีวิว Amazon เป็นข้อมูลมาตรฐาน</desc>
+<rect x="2" y="2" width="876" height="496" rx="14" fill="#FFFFFF" stroke="#E5E3DC" stroke-width="1.5"/>
+<text x="24" y="34" font-size="19" font-weight="500" fill="#2C2C2A">ตารางสรุปตัวชี้วัด — น้องช้อป</text>
+<text x="24" y="55" font-size="11.5" fill="#7A7972">ผลรันจริงบนเครื่อง local · แคตตาล็อก 1,800 สินค้า Amazon · คอลัมน์ขวา = ข้อมูลที่ใช้ (★ = มาตรฐาน ไม่ใช่ทำเอง)</text>
+
+<rect x="24" y="76" width="832" height="34" fill="#F1EFE8"/>
+<text x="72" y="98" text-anchor="middle" font-size="12.5" font-weight="500" fill="#444441">กลุ่ม</text>
+<text x="130" y="98" font-size="12.5" font-weight="500" fill="#444441">ตัวชี้วัด</text>
+<text x="280" y="98" font-size="12.5" font-weight="500" fill="#444441">วัดอะไร</text>
+<text x="565" y="98" text-anchor="middle" font-size="12.5" font-weight="500" fill="#444441">ผล</text>
+<text x="733" y="98" text-anchor="middle" font-size="12.5" font-weight="500" fill="#444441">ข้อมูลที่ใช้</text>
+
+<!-- group bands -->
+<rect x="24" y="110" width="96" height="120" fill="#FAEEDA"/>
+<text x="72" y="166" text-anchor="middle" font-size="14" font-weight="500" fill="#854F0B">RAG</text>
+<text x="72" y="183" text-anchor="middle" font-size="10.5" fill="#854F0B">ค้นหา</text>
+<rect x="24" y="230" width="96" height="60" fill="#EEEDFE"/>
+<text x="72" y="256" text-anchor="middle" font-size="14" font-weight="500" fill="#3C3489">CRS</text>
+<text x="72" y="273" text-anchor="middle" font-size="10.5" fill="#3C3489">บทสนทนา</text>
+<rect x="24" y="290" width="96" height="60" fill="#E6F1FB"/>
+<text x="72" y="316" text-anchor="middle" font-size="14" font-weight="500" fill="#0C447C">System</text>
+<text x="72" y="333" text-anchor="middle" font-size="10.5" fill="#0C447C">เร็ว/เสถียร</text>
+<rect x="24" y="350" width="96" height="30" fill="#E1F5EE"/>
+<text x="72" y="370" text-anchor="middle" font-size="13" font-weight="500" fill="#0F6E56">Behavioral</text>
+
+<!-- data-used bands (right) -->
+<rect x="610" y="110" width="246" height="120" fill="#FBFAF7"/>
+<rect x="620" y="118" width="226" height="46" rx="7" fill="#FAEEDA" stroke="#BA7517" stroke-width="1.4"/>
+<text x="733" y="136" text-anchor="middle" font-size="10.5" font-weight="500" fill="#854F0B">★ Amazon category label</text>
+<text x="733" y="152" text-anchor="middle" font-size="10" fill="#854F0B">1,800 ชิ้น (มาตรฐาน)</text>
+<rect x="620" y="170" width="226" height="46" rx="7" fill="#FAEEDA" stroke="#BA7517" stroke-width="1.4"/>
+<text x="733" y="188" text-anchor="middle" font-size="10.5" font-weight="500" fill="#854F0B">★ leave-one-out รีวิวจริง</text>
+<text x="733" y="204" text-anchor="middle" font-size="10" fill="#854F0B">(McAuley 2023) → Recall@k</text>
+<rect x="610" y="230" width="246" height="60" fill="#FBFAF7"/>
+<rect x="620" y="242" width="226" height="36" rx="7" fill="#EEEDFE" stroke="#7F77DD" stroke-width="1.4"/>
+<text x="733" y="264" text-anchor="middle" font-size="10.5" fill="#3C3489">user-simulator (จำลองลูกค้า, ทำเอง)</text>
+<rect x="610" y="290" width="246" height="60" fill="#FBFAF7"/>
+<text x="733" y="324" text-anchor="middle" font-size="11" fill="#5F5E5A">5 turn ตัวแทน · จับเวลา</text>
+<rect x="610" y="350" width="246" height="30" fill="#FBFAF7"/>
+<text x="733" y="370" text-anchor="middle" font-size="11" fill="#5F5E5A">5 สถานการณ์ · unit test</text>
+
+<!-- rows -->
+<g font-size="12">
+<text x="130" y="130" font-weight="500" fill="#2C2C2A">Precision@10</text><text x="280" y="130" fill="#5F5E5A">ค้นตรงหมวด (มาตรฐาน)</text><text x="565" y="130" text-anchor="middle" font-size="14" font-weight="500" fill="#A5731A">0.90</text>
+<text x="130" y="160" font-weight="500" fill="#2C2C2A">NDCG@10</text><text x="280" y="160" fill="#5F5E5A">คุณภาพจัดอันดับ (มาตรฐาน)</text><text x="565" y="160" text-anchor="middle" font-size="14" font-weight="500" fill="#A5731A">0.93</text>
+<text x="130" y="190" font-weight="500" fill="#2C2C2A">Budget within</text><text x="280" y="190" fill="#5F5E5A">อยู่ในงบ (hard filter ราคา)</text><text x="565" y="190" text-anchor="middle" font-size="14" font-weight="500" fill="#A5731A">100%</text>
+<text x="130" y="220" font-weight="500" fill="#2C2C2A">Recall@10 (LOO)</text><text x="280" y="220" fill="#5F5E5A">ทายชิ้นถัดไป รีวิวจริง (มาตรฐาน)</text><text x="565" y="220" text-anchor="middle" font-size="14" font-weight="500" fill="#A5731A">0.23</text>
+
+<text x="130" y="250" font-weight="500" fill="#2C2C2A">Success@3</text><text x="280" y="250" fill="#5F5E5A">แนะนำตรงหมวด+ในงบ ใน 3 turn</text><text x="565" y="250" text-anchor="middle" font-size="14" font-weight="500" fill="#534AB7">100%</text>
+<text x="130" y="280" font-weight="500" fill="#2C2C2A">Avg turns</text><text x="280" y="280" fill="#5F5E5A">เฉลี่ยกี่ turn จนสำเร็จ</text><text x="565" y="280" text-anchor="middle" font-size="14" font-weight="500" fill="#534AB7">1.33</text>
+
+<text x="130" y="310" font-weight="500" fill="#2C2C2A">Latency/turn</text><text x="280" y="310" fill="#5F5E5A">เวลาเฉลี่ยต่อ turn</text><text x="565" y="310" text-anchor="middle" font-size="14" font-weight="500" fill="#185FA5">14.3วิ</text>
+<text x="130" y="340" font-weight="500" fill="#2C2C2A">JSON fail</text><text x="280" y="340" fill="#5F5E5A">โมเดลตอบ JSON พัง (0/12)</text><text x="565" y="340" text-anchor="middle" font-size="14" font-weight="500" fill="#185FA5">0%</text>
+
+<text x="130" y="370" font-weight="500" fill="#2C2C2A">Behavioral test</text><text x="280" y="370" font-size="11" fill="#5F5E5A">grounded / ปฏิเสธซ้ำ / งบ / action</text><text x="565" y="370" text-anchor="middle" font-size="14" font-weight="500" fill="#0F6E56">10/11</text>
+</g>
+
+<!-- grid -->
+<g stroke="#E5E3DC" stroke-width="1">
+<line x1="120" y1="140" x2="610" y2="140"/><line x1="120" y1="170" x2="610" y2="170"/><line x1="120" y1="200" x2="610" y2="200"/>
+<line x1="120" y1="260" x2="610" y2="260"/><line x1="120" y1="320" x2="610" y2="320"/>
+</g>
+<g stroke="#D3D1C7" stroke-width="1.2">
+<line x1="24" y1="230" x2="856" y2="230"/><line x1="24" y1="290" x2="856" y2="290"/><line x1="24" y1="350" x2="856" y2="350"/>
+</g>
+<g stroke="#D3D1C7" stroke-width="1" fill="none">
+<rect x="24" y="76" width="832" height="304"/>
+<line x1="120" y1="76" x2="120" y2="380"/><line x1="270" y1="76" x2="270" y2="380"/><line x1="520" y1="76" x2="520" y2="380"/><line x1="610" y1="76" x2="610" y2="380"/>
+</g>
+
+<text x="24" y="404" font-size="10.5" fill="#8A6A22">★ ข้อมูลมาตรฐาน: RAG = label หมวด Amazon (1,800 ชิ้น) + leave-one-out จากรีวิวจริง (McAuley 2023) — ไม่ใช่เฉลยทำเอง</text>
+<text x="24" y="420" font-size="10.5" fill="#7A7972">RAG category P@10=0.90 (ดีกว่าสุ่ม 5.4x) · budget-filter 100% (มิติ commercial) · LOO Recall@10=0.23 (ดีกว่าสุ่ม 3.5x)</text>
+<text x="24" y="436" font-size="10.5" fill="#7A7972">CRS = user-simulator (จำลองลูกค้าด้วย AI, success=ตรงหมวด+ในงบ) · System/Behavioral = วัดระบบเอง</text>
+<text x="24" y="452" font-size="10.5" fill="#7A7972">บทเรียน: content-based เก่งจับ category/semantic + กรองงบเป๊ะ แต่ "ทายชิ้นถัดไป" (collaborative) ยังเป็นงานยาก · ทั้งหมดรัน local ฟรี</text>
+</svg>

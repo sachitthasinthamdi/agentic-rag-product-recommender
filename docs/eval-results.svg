@@ -1,0 +1,49 @@
+<svg viewBox="0 0 880 448" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI','Noto Sans Thai',sans-serif" role="img" aria-label="สรุปผลการประเมิน">
+<title>ผลการประเมิน น้องช้อป — RAG · CRS · System</title>
+<desc>ตัวเลขจริงจากการรันบนเครื่อง local: retrieval P@10 0.90, budget filter 100%, CRS success@3 100%, ระบบ 14.3 วินาทีต่อ turn</desc>
+<rect x="2" y="2" width="876" height="444" rx="14" fill="#FFFFFF" stroke="#E5E3DC" stroke-width="1.5"/>
+<text x="28" y="36" font-size="19" font-weight="500" fill="#2C2C2A">ผลการประเมิน — น้องช้อป (รันจริงบนเครื่อง local)</text>
+<text x="28" y="57" font-size="11.5" fill="#7A7972">ครอบคลุม 3 ระบบ · แคตตาล็อก 1,800 สินค้า Amazon · Typhoon2 8B + bge-m3</text>
+
+<rect x="24" y="76" width="270" height="296" rx="12" fill="#FFFFFF" stroke="#BA7517" stroke-width="1.5"/>
+<text x="159" y="104" text-anchor="middle" font-size="15" font-weight="500" fill="#854F0B">RAG — คุณภาพการค้นหา</text>
+<line x1="44" y1="116" x2="274" y2="116" stroke="#F0E0BE"/>
+<text x="159" y="156" text-anchor="middle" font-size="30" font-weight="500" fill="#A5731A">0.90</text>
+<text x="159" y="176" text-anchor="middle" font-size="11.5" fill="#5F5E5A">Precision@10 (ค้นตรงหมวด)</text>
+<text x="159" y="218" text-anchor="middle" font-size="30" font-weight="500" fill="#A5731A">100%</text>
+<text x="159" y="238" text-anchor="middle" font-size="11.5" fill="#5F5E5A">budget-filter (อยู่ในงบ)</text>
+<text x="159" y="280" text-anchor="middle" font-size="30" font-weight="500" fill="#A5731A">0.93</text>
+<text x="159" y="300" text-anchor="middle" font-size="11.5" fill="#5F5E5A">NDCG@10 (คุณภาพจัดอันดับ)</text>
+<line x1="44" y1="322" x2="274" y2="322" stroke="#F0E0BE"/>
+<text x="159" y="342" text-anchor="middle" font-size="10" fill="#8A6A22">ดีกว่าสุ่ม 5.4x</text>
+<text x="159" y="356" text-anchor="middle" font-size="10" fill="#8A6A22">+ LOO รีวิวจริง Recall@10 = 0.23</text>
+
+<rect x="305" y="76" width="270" height="296" rx="12" fill="#FFFFFF" stroke="#7F77DD" stroke-width="1.5"/>
+<text x="440" y="104" text-anchor="middle" font-size="15" font-weight="500" fill="#3C3489">CRS — คุณภาพบทสนทนา</text>
+<line x1="325" y1="116" x2="555" y2="116" stroke="#DDD9F6"/>
+<text x="440" y="156" text-anchor="middle" font-size="30" font-weight="500" fill="#534AB7">100%</text>
+<text x="440" y="176" text-anchor="middle" font-size="11.5" fill="#5F5E5A">Success@3 (แนะนำโดนใน 3 turn)</text>
+<text x="440" y="218" text-anchor="middle" font-size="30" font-weight="500" fill="#534AB7">67%</text>
+<text x="440" y="238" text-anchor="middle" font-size="11.5" fill="#5F5E5A">Success@1 (โดนตั้งแต่ turn แรก)</text>
+<text x="440" y="280" text-anchor="middle" font-size="30" font-weight="500" fill="#534AB7">1.33</text>
+<text x="440" y="300" text-anchor="middle" font-size="11.5" fill="#5F5E5A">Average Turns to success</text>
+<line x1="325" y1="322" x2="555" y2="322" stroke="#DDD9F6"/>
+<text x="440" y="342" text-anchor="middle" font-size="10" fill="#6A5FC0">user simulator · LLM เล่นบทลูกค้า</text>
+<text x="440" y="356" text-anchor="middle" font-size="10" fill="#6A5FC0">(ห้ามบอกชื่อ/แบรนด์ · success=ตรงหมวด+ในงบ)</text>
+
+<rect x="586" y="76" width="270" height="296" rx="12" fill="#FFFFFF" stroke="#378ADD" stroke-width="1.5"/>
+<text x="721" y="104" text-anchor="middle" font-size="15" font-weight="500" fill="#0C447C">System — เร็ว / เสถียร</text>
+<line x1="606" y1="116" x2="836" y2="116" stroke="#CFE2F7"/>
+<text x="721" y="156" text-anchor="middle" font-size="30" font-weight="500" fill="#185FA5">14.3<tspan font-size="15">วิ</tspan></text>
+<text x="721" y="176" text-anchor="middle" font-size="11.5" fill="#5F5E5A">เฉลี่ยต่อ turn</text>
+<text x="721" y="218" text-anchor="middle" font-size="30" font-weight="500" fill="#185FA5">0%</text>
+<text x="721" y="238" text-anchor="middle" font-size="11.5" fill="#5F5E5A">JSON failure rate (0/12)</text>
+<text x="721" y="280" text-anchor="middle" font-size="30" font-weight="500" fill="#185FA5">3–4<tspan font-size="15">วิ</tspan></text>
+<text x="721" y="300" text-anchor="middle" font-size="11.5" fill="#5F5E5A">ask / chat (recommend 17–25 วิ)</text>
+<line x1="606" y1="322" x2="836" y2="322" stroke="#CFE2F7"/>
+<text x="721" y="342" text-anchor="middle" font-size="10" fill="#185FA5">ยืนยัน: ask/chat "ลงตื้น" เร็วกว่า</text>
+<text x="721" y="356" text-anchor="middle" font-size="10" fill="#185FA5">recommend ที่ "ลงลึก" ครบ pipeline</text>
+
+<text x="28" y="400" font-size="11" fill="#5F5E5A">ข้อค้นพบ: กรองงบเป๊ะ 100% (มิติ commercial ที่หนังไม่มี) · retriever จับ category ได้ดี (P@10 0.90 ดีกว่าสุ่ม 5.4x)</text>
+<text x="28" y="418" font-size="11" fill="#5F5E5A">leave-one-out จากรีวิวจริง Recall@10=0.23 (content-based ≠ collaborative filtering แต่ดีกว่าหนัง MovieLens 0%) · ทั้งหมดรัน local ฟรี</text>
+</svg>

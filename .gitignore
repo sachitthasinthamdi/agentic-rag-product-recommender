@@ -1,0 +1,28 @@
+# ===== Environment & generated =====
+.venv/
+.chroma/
+__pycache__/
+*.pyc
+
+# ===== Large / regeneratable data (สร้างใหม่ได้ด้วย data/build_products.py) =====
+data/products.json
+data/products_1800_backup.json
+
+# ===== ไฟล์โดเมนเก่า (หนัง/redial) — โปรเจกต์ pivot เป็น product recommendation แล้ว =====
+data/movies.json
+data/movies.sample.json
+data/movielens/
+data/redial/
+data/build_catalog.py
+eval/eval_movielens.py
+eval/movielens_catalog.py
+eval/eval_redial.py
+eval/redial_catalog.py
+eval/eval_retrieval.py
+eval/gold_retrieval.json
+
+# ===== รายงาน eval ที่ generate =====
+eval/reports/
+
+# ===== สไลด์ (binary) =====
+docs/*.pptx

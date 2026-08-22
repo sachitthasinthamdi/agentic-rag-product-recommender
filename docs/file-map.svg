@@ -1,0 +1,127 @@
+<svg viewBox="0 0 960 740" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI','Noto Sans Thai',sans-serif" role="img" aria-label="แผนผังความเชื่อมโยงไฟล์">
+<title>แผนผังความเชื่อมโยงไฟล์ — Product Rec Agent</title>
+<desc>ไฟล์ในโปรเจกต์เชื่อมกันเป็นชั้น หน้าบ้าน เรียก orchestrator เรียก 5 ขั้น ทุกขั้นคุย AI ผ่าน llm.py</desc>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8A93A6"/></marker>
+<marker id="ard" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#B7A16A"/></marker>
+</defs>
+<rect x="2" y="2" width="956" height="736" rx="14" fill="#FFFFFF" stroke="#E5E3DC" stroke-width="1.5"/>
+<text x="26" y="36" font-size="19" font-weight="600" fill="#22262F">แผนผังความเชื่อมโยงไฟล์ — น้องช้อป</text>
+<text x="26" y="57" font-size="11.5" fill="#7A8296">ลูกศร = import / เรียกใช้ · อ่านจากบนลงล่าง · โค้ดหลักอยู่ใน src/ ทั้งหมด</text>
+<text x="700" y="36" font-size="10.5" fill="#8A93A6">━ import   ┄ อ่านค่ากลาง</text>
+
+<!-- arrows layer (draw first, behind boxes) -->
+<g stroke="#8A93A6" stroke-width="1.5" fill="none">
+<path d="M335 122 L410 150" marker-end="url(#ar)"/>
+<path d="M625 122 L556 150" marker-end="url(#ar)"/>
+<path d="M405 212 L165 250" marker-end="url(#ar)"/>
+<path d="M450 212 L372 250" marker-end="url(#ar)"/>
+<path d="M520 212 L588 250" marker-end="url(#ar)"/>
+<path d="M560 212 L818 250" marker-end="url(#ar)"/>
+<path d="M135 338 L455 384" marker-end="url(#ar)"/>
+<path d="M365 338 L478 384" marker-end="url(#ar)"/>
+<path d="M825 338 L540 384" marker-end="url(#ar)"/>
+<path d="M560 338 L300 384" marker-end="url(#ar)"/>
+<path d="M610 338 L512 384" marker-end="url(#ar)"/>
+<path d="M320 428 L383 428" marker-end="url(#ar)"/>
+<path d="M540 471 L640 518" marker-end="url(#ar)"/>
+<path d="M185 471 L165 518" marker-end="url(#ar)"/>
+<path d="M245 471 L378 518" marker-end="url(#ar)"/>
+<path d="M390 660 L390 604" marker-end="url(#ar)"/>
+</g>
+<g stroke="#B7A16A" stroke-width="1.3" fill="none" stroke-dasharray="4 3">
+<path d="M607 424 L668 405" marker-end="url(#ard)"/>
+<path d="M705 338 L772 384" marker-end="url(#ard)"/>
+</g>
+
+<!-- ENTRY -->
+<g>
+<rect x="235" y="80" width="200" height="44" rx="8" fill="#F1F3F7" stroke="#9AA3B2"/>
+<text x="335" y="100" text-anchor="middle" font-size="13.5" font-weight="600" fill="#3A4152">cli.py</text>
+<text x="335" y="116" text-anchor="middle" font-size="10" fill="#7A8296">โหมด terminal</text>
+<rect x="525" y="80" width="200" height="44" rx="8" fill="#F1F3F7" stroke="#9AA3B2"/>
+<text x="625" y="100" text-anchor="middle" font-size="13.5" font-weight="600" fill="#3A4152">app.py</text>
+<text x="625" y="116" text-anchor="middle" font-size="10" fill="#7A8296">เว็บ Streamlit (การ์ด + รูป)</text>
+</g>
+
+<!-- ORCHESTRATOR -->
+<rect x="300" y="152" width="360" height="60" rx="9" fill="#EEEBFF" stroke="#6C5CE7" stroke-width="1.6"/>
+<text x="480" y="176" text-anchor="middle" font-size="14.5" font-weight="700" fill="#3A2E9E">agent.py — Orchestrator (ProductRecAgent)</text>
+<text x="480" y="196" text-anchor="middle" font-size="10.5" fill="#5B4FC0">respond(): จด → วางแผน → (3 ทาง) · ⑤ Generator + RECOMMEND/ASK/CHAT_SYSTEM อยู่ในไฟล์นี้</text>
+
+<!-- STAGES -->
+<g>
+<rect x="30" y="250" width="210" height="88" rx="8" fill="#E4F5F0" stroke="#12A594" stroke-width="1.4"/>
+<text x="135" y="273" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0C7A6E">① memory.py</text>
+<text x="135" y="293" text-anchor="middle" font-size="10.5" fill="#2C2C2A">จดโน้ต profile (8 ช่อง)</text>
+<text x="135" y="309" text-anchor="middle" font-size="10.5" fill="#2C2C2A">SessionMemory + history</text>
+<text x="135" y="327" text-anchor="middle" font-size="9.5" font-style="italic" fill="#12A594">EXTRACT_SYSTEM</text>
+
+<rect x="260" y="250" width="210" height="88" rx="8" fill="#ECEAFB" stroke="#6C5CE7" stroke-width="1.4"/>
+<text x="365" y="273" text-anchor="middle" font-size="13.5" font-weight="700" fill="#3A2E9E">② planner.py</text>
+<text x="365" y="293" text-anchor="middle" font-size="10.5" fill="#2C2C2A">ตัดสินใจ dialog policy</text>
+<text x="365" y="309" text-anchor="middle" font-size="10.5" fill="#2C2C2A">ask / recommend / chat</text>
+<text x="365" y="327" text-anchor="middle" font-size="9.5" font-style="italic" fill="#6C5CE7">PLAN_SYSTEM</text>
+
+<rect x="490" y="250" width="210" height="88" rx="8" fill="#FBEFD9" stroke="#E8930C" stroke-width="1.4"/>
+<text x="595" y="273" text-anchor="middle" font-size="13.5" font-weight="700" fill="#9A6206">③ retriever.py</text>
+<text x="595" y="293" text-anchor="middle" font-size="10.5" fill="#2C2C2A">ค้นเวกเตอร์ + กรองงบ</text>
+<text x="595" y="309" text-anchor="middle" font-size="10.5" fill="#2C2C2A">build_query (นำด้วยหมวด)</text>
+<text x="595" y="327" text-anchor="middle" font-size="9.5" font-style="italic" fill="#E8930C">ใช้ bge-m3 (ไม่มี prompt)</text>
+
+<rect x="720" y="250" width="210" height="88" rx="8" fill="#FCE9E5" stroke="#FF6B57" stroke-width="1.4"/>
+<text x="825" y="273" text-anchor="middle" font-size="13.5" font-weight="700" fill="#C13B29">④ reranker.py</text>
+<text x="825" y="293" text-anchor="middle" font-size="10.5" fill="#2C2C2A">ให้คะแนน 0–10 (ARAG)</text>
+<text x="825" y="309" text-anchor="middle" font-size="10.5" fill="#2C2C2A">คัดเหลือ top 3</text>
+<text x="825" y="327" text-anchor="middle" font-size="9.5" font-style="italic" fill="#FF6B57">RERANK_SYSTEM</text>
+</g>
+
+<!-- FOUNDATION -->
+<g>
+<rect x="100" y="385" width="220" height="86" rx="8" fill="#FBF4E7" stroke="#BA8B2E" stroke-width="1.4"/>
+<text x="210" y="410" text-anchor="middle" font-size="13.5" font-weight="700" fill="#8A6420">catalog.py</text>
+<text x="210" y="430" text-anchor="middle" font-size="10.5" fill="#2C2C2A">index สินค้า → ChromaDB</text>
+<text x="210" y="447" text-anchor="middle" font-size="10.5" fill="#2C2C2A">build_document · batch 64</text>
+<text x="210" y="463" text-anchor="middle" font-size="9.5" font-style="italic" fill="#BA8B2E">load_products / get_collection</text>
+
+<rect x="385" y="385" width="220" height="86" rx="9" fill="#DFF3EF" stroke="#12A594" stroke-width="2.4"/>
+<text x="495" y="409" text-anchor="middle" font-size="14" font-weight="800" fill="#0C7A6E">★ llm.py</text>
+<text x="495" y="428" text-anchor="middle" font-size="10.5" fill="#2C2C2A">ประตูเดียวสู่ AI</text>
+<text x="495" y="445" text-anchor="middle" font-size="10.5" fill="#2C2C2A">chat · chat_json · embed</text>
+<text x="495" y="462" text-anchor="middle" font-size="9.5" font-style="italic" fill="#12A594">defensive JSON + STATS</text>
+
+<rect x="670" y="385" width="200" height="86" rx="8" fill="#F1F3F7" stroke="#9AA3B2" stroke-width="1.4"/>
+<text x="770" y="410" text-anchor="middle" font-size="13.5" font-weight="700" fill="#3A4152">config.py</text>
+<text x="770" y="430" text-anchor="middle" font-size="10.5" fill="#2C2C2A">ค่ากลาง: โมเดล · k · path</text>
+<text x="770" y="450" text-anchor="middle" font-size="9.5" fill="#7A8296">อ่านโดย llm / catalog /</text>
+<text x="770" y="464" text-anchor="middle" font-size="9.5" fill="#7A8296">retriever / reranker</text>
+</g>
+
+<!-- EXTERNAL -->
+<g>
+<rect x="55" y="520" width="210" height="84" rx="8" fill="#F7F6F2" stroke="#9AA3B2" stroke-dasharray="5 3" stroke-width="1.3"/>
+<text x="160" y="544" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5F5E5A">ChromaDB · .chroma/</text>
+<text x="160" y="564" text-anchor="middle" font-size="10.5" fill="#5F5E5A">Vector DB (ภายนอก)</text>
+<text x="160" y="582" text-anchor="middle" font-size="10" fill="#7A8296">1,800 สินค้า (เวกเตอร์)</text>
+
+<rect x="285" y="520" width="210" height="84" rx="8" fill="#F7F6F2" stroke="#9AA3B2" stroke-dasharray="5 3" stroke-width="1.3"/>
+<text x="390" y="544" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5F5E5A">data/products.json</text>
+<text x="390" y="564" text-anchor="middle" font-size="10.5" fill="#5F5E5A">แคตตาล็อก 1,800 ชิ้น</text>
+<text x="390" y="582" text-anchor="middle" font-size="10" fill="#7A8296">title · price · features · image</text>
+
+<rect x="520" y="520" width="300" height="84" rx="8" fill="#F7F6F2" stroke="#9AA3B2" stroke-dasharray="5 3" stroke-width="1.3"/>
+<text x="670" y="544" text-anchor="middle" font-size="12.5" font-weight="700" fill="#5F5E5A">Ollama (ภายนอก)</text>
+<text x="670" y="564" text-anchor="middle" font-size="10.5" fill="#5F5E5A">Typhoon2 8B — คิด/เขียน (chat)</text>
+<text x="670" y="582" text-anchor="middle" font-size="10.5" fill="#5F5E5A">bge-m3 — แปลงเวกเตอร์ (embed)</text>
+
+<rect x="285" y="660" width="210" height="42" rx="8" fill="#FFFFFF" stroke="#BA8B2E" stroke-dasharray="5 3" stroke-width="1.3"/>
+<text x="390" y="678" text-anchor="middle" font-size="11.5" font-weight="600" fill="#8A6420">data/build_products.py</text>
+<text x="390" y="693" text-anchor="middle" font-size="9.5" fill="#7A8296">stream Amazon Reviews 2023 → สร้าง (ครั้งเดียว)</text>
+</g>
+
+<!-- side labels -->
+<text x="26" y="180" font-size="10.5" fill="#9AA3B2" transform="rotate(-90 26 180)">หน้าบ้าน</text>
+<text x="944" y="295" font-size="10.5" fill="#9AA3B2" transform="rotate(90 944 295)">5 ขั้น pipeline</text>
+<text x="944" y="430" font-size="10.5" fill="#9AA3B2" transform="rotate(90 944 430)">ฐาน</text>
+<text x="944" y="560" font-size="10.5" fill="#9AA3B2" transform="rotate(90 944 560)">ภายนอก</text>
+</svg>
