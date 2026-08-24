@@ -10,18 +10,18 @@
 """
 import json
 
-from . import llm, catalog, memory, planner, retriever, reranker
+from . import config, llm, catalog, memory, planner, retriever, reranker
 
-CHAT_SYSTEM = """คุณคือ "น้องช้อป" ผู้ช่วยแนะนำสินค้า พูดไทยเป็นกันเอง สุภาพ กระชับ
+CHAT_SYSTEM = """คุณคือ "AI Assistant" ผู้ช่วยแนะนำสินค้า พูดไทยเป็นกันเอง สุภาพ กระชับ
 คุยสนุกแต่ไม่ยืดยาว ถ้าผู้ใช้ถามข้อมูลสินค้าที่อยู่ในบริบทที่ให้ ให้ตอบจากบริบทเท่านั้น
 ถ้าไม่รู้ให้บอกตรงๆ ห้ามแต่งข้อมูลเอง"""
 
-ASK_SYSTEM = """คุณคือ "น้องช้อป" ผู้ช่วยแนะนำสินค้า ภาษาไทยเป็นกันเอง
+ASK_SYSTEM = """คุณคือ "AI Assistant" ผู้ช่วยแนะนำสินค้า ภาษาไทยเป็นกันเอง
 ตอนนี้ข้อมูลยังไม่พอจะแนะนำ จงถามคำถามสั้นๆ 1 คำถามเพื่อเจาะ preference ที่ยังขาด
 เช่น อยากได้สินค้าหมวดไหน งบประมาณเท่าไหร่ เอาไว้ใช้ทำอะไร มีแบรนด์หรือฟีเจอร์ที่ต้องการไหม
 ถามอย่างเดียว อย่าเพิ่งแนะนำสินค้า และอย่าถามหลายเรื่องพร้อมกัน"""
 
-RECOMMEND_SYSTEM = """คุณคือ "น้องช้อป" ผู้ช่วยแนะนำสินค้า พูดไทยเป็นกันเอง จริงใจ เหมือนเพื่อนที่รู้ใจ
+RECOMMEND_SYSTEM = """คุณคือ "AI Assistant" ผู้ช่วยแนะนำสินค้า พูดไทยเป็นกันเอง จริงใจ เหมือนเพื่อนที่รู้ใจ
 แนะนำจาก "ตัวเลือกที่ระบบคัดมาแล้ว" เท่านั้น ห้ามแต่งสินค้า/ชื่อ/ราคา/สเปคที่ไม่ได้ให้มา
 แนะนำครบทุกชิ้น เป็นลิสต์หมายเลข 1. 2. 3.
 
@@ -49,16 +49,34 @@ class ProductRecAgent:
         self.ask_count = 0                        # กัน planner ถามวนไม่จบ
         self.last_recommendations: list[str] = []
 
-    def respond(self, user_message: str) -> dict:
-        """ประมวลผล 1 turn คืน {"reply", "action", "profile", "candidates", "picked", ...}"""
+    def respond(self, user_message: str, agentic: bool = True) -> dict:
+        """ประมวลผล 1 turn คืน {"reply", "action", "profile", "candidates", "picked", ...}
+
+        agentic=True  -> Agentic RAG (ระยะ 2): Memory + Planner + Retriever + Reranker + Generator
+        agentic=False -> Conversational RAG (ระยะ 1): Memory + Retriever(+filter) + Generator
+                         (ไม่มี Planner จึงตอบทุก turn, ไม่มี Reranker จึงใช้ลำดับ cosine ตรงๆ)
+        """
         trace: dict = {}
 
-        # [1] อัปเดตความจำ + โปรไฟล์ (ส่งบทสนทนาก่อนหน้าไปช่วยตีความคำตอบสั้นๆ เช่น "มีสาย")
+        # [1] อัปเดตความจำ + โปรไฟล์ (ทั้งสองระยะมี Memory)
         self.memory.update_profile(user_message, self.last_recommendations,
                                    self.memory.recent())
         trace["profile"] = json.loads(json.dumps(self.memory.profile))
+        trace["mode"] = "agentic" if agentic else "conversational"
 
-        # [2] วางแผน: turn นี้ควรทำอะไร
+        if not agentic:
+            # ---- ระยะที่ 1 Conversational RAG: ค้น + ตอบทุก turn (ไม่มี Planner/Reranker) ----
+            trace["action"] = "recommend"
+            trace["plan_reason"] = "Conversational RAG: ค้นและตอบทุก turn (ไม่มี Planner/Reranker)"
+            reply, extra = self._recommend(user_message, rerank=False)
+            self.ask_count = 0
+            trace.update(extra)
+            self.memory.add("user", user_message)
+            self.memory.add("assistant", reply)
+            trace["reply"] = reply
+            return trace
+
+        # [2] วางแผน: turn นี้ควรทำอะไร (เฉพาะ Agentic RAG)
         plan = planner.decide(self.memory.profile, self.memory.recent(),
                               user_message, self.ask_count)
         trace["action"], trace["plan_reason"] = plan["action"], plan["reason"]
@@ -82,18 +100,22 @@ class ProductRecAgent:
 
     # ---------- actions ----------
 
-    def _recommend(self, user_message: str) -> tuple[str, dict]:
+    def _recommend(self, user_message: str, rerank: bool = True) -> tuple[str, dict]:
         profile = self.memory.profile
 
         # [3] Retrieve: ค้นด้วย query ที่รวม preference สะสม
-        # budget_max เป็น hard filter — เกินงบต้องไม่หลุดมา
+        # budget_max เป็น hard filter — เกินงบต้องไม่หลุดมา (มีทั้งสองระยะ)
         query = retriever.build_query(profile, user_message)
         exclude = self.memory.rejected_ids(self.products)
         candidates = retriever.retrieve(query, exclude_ids=exclude,
                                         budget_max=profile.get("budget_max"))
 
-        # [4] Rerank: LLM คัดตัวจริงเทียบกับ profile (หัวใจ ARAG)
-        picked = reranker.rerank([dict(c) for c in candidates], profile, user_message)
+        # [4] Rerank: LLM คัดตัวจริงเทียบกับ profile (หัวใจ ARAG) — เฉพาะ Agentic RAG
+        # โหมด Conversational RAG (rerank=False) ใช้ลำดับ cosine จาก vector search ตรงๆ
+        if rerank:
+            picked = reranker.rerank([dict(c) for c in candidates], profile, user_message)
+        else:
+            picked = [dict(c) for c in candidates[:config.RERANK_TOP_N]]
 
         if not picked:
             return ("ขอโทษด้วยนะคะ ในคลังตอนนี้ยังหาสินค้าที่ตรงใจไม่เจอเลย "
@@ -101,12 +123,13 @@ class ProductRecAgent:
                         "query": query, "candidates": candidates, "picked": []}
 
         # [5] Generate: ตอบโดย ground กับ metadata จริงของสินค้าที่คัดมา
+        # (โหมด Conversational ไม่มี fit_reason จาก reranker จึงข้ามบรรทัดนั้น)
         context = "\n\n".join(
             f"ชิ้นที่ {i+1}: {m['title']}\n"
             f"หมวด: {m['category']} | ราคา ${m['price']} | แบรนด์: {m.get('brand', '-')} | "
             f"rating {m.get('rating', '-')} ({m.get('rating_count', 0)} รีวิว)\n"
-            f"จุดเด่น: {', '.join(m.get('features', [])[:3])}\n"
-            f"เหตุผลที่ระบบคัดมา: {m['fit_reason']}"
+            f"จุดเด่น: {', '.join(m.get('features', [])[:3])}"
+            + (f"\nเหตุผลที่ระบบคัดมา: {m['fit_reason']}" if m.get('fit_reason') else "")
             for i, m in enumerate(picked)
         )
         prompt = (

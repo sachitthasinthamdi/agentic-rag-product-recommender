@@ -27,7 +27,7 @@ def main():
     n = catalog.build_index()
     print(f"คลังสินค้าพร้อม: {n} ชิ้น")
     print("=" * 50)
-    print("น้องช้อป: สวัสดีค่า~ วันนี้อยากได้สินค้าอะไรดีคะ บอกหมวด งบ หรือการใช้งานมาได้เลย")
+    print("AI Assistant: สวัสดีค่า~ วันนี้อยากได้สินค้าอะไรดีคะ บอกหมวด งบ หรือการใช้งานมาได้เลย")
     print("(พิมพ์ 'ออก' เพื่อจบ)")
     print("=" * 50)
 
@@ -40,7 +40,7 @@ def main():
         if not user:
             continue
         if user in ("ออก", "exit", "quit", "q"):
-            print("น้องช้อป: ขอให้ช้อปสนุกนะคะ~")
+            print("AI Assistant: ขอให้ช้อปสนุกนะคะ~")
             break
 
         result = agent.respond(user)
@@ -53,7 +53,7 @@ def main():
                     f"{m['title'][:30]} (${m['price']}, fit {m['fit_score']})"
                     for m in result["picked"]))
 
-        print(f"\nน้องช้อป: {result['reply']}")
+        print(f"\nAI Assistant: {result['reply']}")
 
 
 if __name__ == "__main__":

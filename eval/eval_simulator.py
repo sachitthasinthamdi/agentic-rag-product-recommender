@@ -26,7 +26,7 @@ from src import catalog, llm
 from src.agent import ProductRecAgent
 from eval.report_utils import write_markdown, md_table
 
-SIM_SYSTEM = """คุณกำลังสวมบทเป็น "ลูกค้า" ที่อยากซื้อสินค้าชิ้นหนึ่ง กำลังคุยกับผู้ช่วยแนะนำสินค้า (น้องช้อป)
+SIM_SYSTEM = """คุณกำลังสวมบทเป็น "ลูกค้า" ที่อยากซื้อสินค้าชิ้นหนึ่ง กำลังคุยกับผู้ช่วยแนะนำสินค้า (AI Assistant)
 
 สินค้าที่คุณอยากได้ (ใช้เป็นแนวทางบรรยายเท่านั้น):
 - หมวด: {category}

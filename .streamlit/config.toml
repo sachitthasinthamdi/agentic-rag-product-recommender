@@ -1,0 +1,11 @@
+# ธีมมืดสไตล์ Claude / ChatGPT สำหรับเดโม AI Assistant
+[theme]
+base = "dark"
+primaryColor = "#d97757"          # โทนคอรัลแบบ Claude ใช้กับปุ่ม/ไฮไลต์
+backgroundColor = "#1a1a1a"        # พื้นหลังหลัก
+secondaryBackgroundColor = "#212121"  # sidebar / วิดเจ็ต
+textColor = "#ececec"
+font = "sans serif"
+
+[server]
+runOnSave = true
